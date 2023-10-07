@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { StylishForm } from './SearchForm.styled';
 
-const SearchForm = ({ submit, changeParam }) => {
-  const [queryValue, setQueryValue] = useState('');
+const SearchForm = ({ submit, changeParam, value }) => {
+  // const [queryValue, setQueryValue] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    submit(queryValue);
+    submit(value);
   }
 
   function handleInputChange(e) {
-    setQueryValue(e.target.value);
+    // setQueryValue(e.target.value);
     changeParam({ query: e.target.value });
   }
 
@@ -19,7 +19,7 @@ const SearchForm = ({ submit, changeParam }) => {
       <input
         type="text"
         name="query"
-        value={queryValue}
+        value={value}
         onChange={handleInputChange}
       />
       <button type="submit">Search</button>
