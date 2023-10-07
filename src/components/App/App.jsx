@@ -4,11 +4,6 @@ import Layout from 'components/Layout/Layout';
 
 import Cast from 'components/Cast/Cast';
 
-// import Reviews from 'components/Reviews/Reviews';
-// import Home from 'pages/Home';
-// import MovieDetails from 'pages/MovieDetails';
-// import Movies from 'pages/Movies';
-
 const Home = lazy(() => import('pages/Home'));
 const Reviews = lazy(() => import('components/Reviews/Reviews'));
 const MovieDetails = lazy(() => import('pages/MovieDetails'));
