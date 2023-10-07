@@ -2,13 +2,11 @@ import List from 'components/List/List';
 import SearchForm from 'components/SearchForm/SearchForm';
 import { getMovieByTitle } from 'helper/api';
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [results, setResults] = useState([]);
   const [searchParam, setSearchParam] = useSearchParams();
-  // const [query, setQuery] = useState('');
-  // const query = searchParam.get('query');
 
   function handleSearchForm(q) {
     getMovieByTitle(q).then(({ results }) => {
@@ -24,8 +22,6 @@ const Movies = () => {
       setResults(results);
     });
   }, []);
-
-  function handleChange() {}
 
   return (
     <>
