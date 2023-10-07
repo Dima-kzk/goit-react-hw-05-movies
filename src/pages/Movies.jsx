@@ -26,7 +26,7 @@ const Movies = () => {
         setResults(results);
       })
       .catch(error => setError(error));
-  }, []);
+  });
 
   if (error) console.log(error);
 
