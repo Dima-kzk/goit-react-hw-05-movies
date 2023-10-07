@@ -9,7 +9,7 @@ const Movies = () => {
   const [searchParam, setSearchParam] = useSearchParams();
   const [error, setError] = useState(false);
 
-  const filmQuery = searchParam.get('query') ?? '';
+  let filmQuery = searchParam.get('query') ?? '';
 
   function handleSearchForm(q) {
     console.log(q);
@@ -20,12 +20,7 @@ const Movies = () => {
       .catch(error => setError(error));
   }
 
-  const updateQueryString = query => {
-    const nextParams = query !== '' ? { query } : {};
-    setSearchParam(nextParams.query);
-  };
-
-  useEffect(() => {
+  const updateResults = () => {
     if (filmQuery === '') {
       return;
     }
@@ -34,6 +29,24 @@ const Movies = () => {
         setResults(results);
       })
       .catch(error => setError(error));
+  };
+
+  const updateQueryString = query => {
+    const nextParams = query !== '' ? { query } : {};
+    setSearchParam(nextParams.query);
+  };
+
+  useEffect(() => {
+    // if (filmQuery === '') {
+    //   return;
+    // }
+    // getMovieByTitle(filmQuery)
+    //   .then(({ results }) => {
+    //     setResults(results);
+    //   })
+    //   .catch(error => setError(error));
+    updateResults();
+    // setResults(results);
   }, []);
 
   if (error) console.log(error);
