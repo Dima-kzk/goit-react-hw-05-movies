@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import Genres from 'components/Genres/Genres';
 import BackLink from 'components/BackLink/BackLink';
 import { FilmInfo, FilmInfoContainer } from './MovieDetails.styled';
-import { TailSpin } from 'react-loader-spinner';
 import Loader from 'components/Loader/Loadet';
 
 const MovieDetails = () => {

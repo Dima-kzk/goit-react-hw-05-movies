@@ -3,7 +3,6 @@ import SearchForm from 'components/SearchForm/SearchForm';
 import { getMovieByTitle } from 'helper/api';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { TailSpin } from 'react-loader-spinner';
 import Loader from 'components/Loader/Loadet';
 
 const Movies = () => {
