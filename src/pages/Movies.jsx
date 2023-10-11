@@ -3,10 +3,13 @@ import SearchForm from 'components/SearchForm/SearchForm';
 import { getMovieByTitle } from 'helper/api';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { TailSpin } from 'react-loader-spinner';
+import Loader from 'components/Loader/Loadet';
 
 const Movies = () => {
   const [results, setResults] = useState([]);
   const [searchParam, setSearchParam] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
   let filmQuery = searchParam.get('query') ?? '';
@@ -17,7 +20,8 @@ const Movies = () => {
       .then(({ results }) => {
         setResults(results);
       })
-      .catch(error => setError(error));
+      .catch(error => setError(true))
+      .finally(() => setIsLoading(false));
   }
 
   useEffect(() => {
@@ -28,20 +32,17 @@ const Movies = () => {
       .then(({ results }) => {
         setResults(results);
       })
-      .catch(error => setError(error));
+      .catch(error => setError(true))
+      .finally(() => setIsLoading(false));
   }, [filmQuery]);
-
-  if (error) console.log(error);
 
   return (
     <>
       <h1>Movies</h1>
       <SearchForm submit={handleSearchForm} />
-      {results.length === 0 ? (
-        <></>
-      ) : (
-        <List results={results} parent="movies" />
-      )}
+      {isLoading && filmQuery && <Loader />}
+      {results.length > 0 && <List results={results} parent="movies" />}
+      {error && <p>Something went wrong...</p>}
     </>
   );
 };
