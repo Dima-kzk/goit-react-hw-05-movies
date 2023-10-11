@@ -21,7 +21,7 @@ const Home = () => {
       <h1>Trendinh today</h1>
       {error && <p>Something went wrong...</p>}
       {isLoading && <Loader />}
-      {results.length > 0 && <List results={results} parent="home" />}
+      {results.length > 0 && <List results={results} />}
     </>
   );
 };

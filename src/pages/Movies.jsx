@@ -15,12 +15,6 @@ const Movies = () => {
 
   function handleSearchForm(q) {
     setSearchParam({ query: q });
-    getMovieByTitle(q)
-      .then(({ results }) => {
-        setResults(results);
-      })
-      .catch(error => setError(true))
-      .finally(() => setIsLoading(false));
   }
 
   useEffect(() => {
@@ -40,7 +34,7 @@ const Movies = () => {
       <h1>Movies</h1>
       <SearchForm submit={handleSearchForm} />
       {isLoading && filmQuery && <Loader />}
-      {results.length > 0 && <List results={results} parent="movies" />}
+      {results.length > 0 && <List results={results} />}
       {error && <p>Something went wrong...</p>}
     </>
   );
